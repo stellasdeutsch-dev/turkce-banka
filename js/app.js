@@ -525,6 +525,242 @@
   tutor.addEventListener("input", calc);
   calc();
 
+
+  /* ===================== v2 visuals ===================== */
+  const onceIn = (el, fn, th = .35) => { if (!el) return; new IntersectionObserver(([en], o) => { if (en.isIntersecting) { o.disconnect(); fn(); } }, { threshold: th }).observe(el); };
+
+  /* split headings: words rise */
+  $$(".split").forEach(h => {
+    const html = h.innerHTML;
+    const tmp = document.createElement("div"); tmp.innerHTML = html;
+    if (tmp.children.length) return;
+    h.setAttribute("aria-label", h.textContent);
+    h.innerHTML = h.textContent.split(" ").map((w, i) => `<span class="w" aria-hidden="true"><span style="transition-delay:${i * 55}ms">${esc(w)}</span></span>`).join(" ");
+    onceIn(h, () => h.classList.add("is-split-in"), .2);
+  });
+
+  /* tickers: duplicate for seamless loop */
+  $$(".ticker__row").forEach(r => { r.innerHTML += r.innerHTML; });
+
+  /* route: scroll-linked line + dot */
+  const routeBox = $("#routeBox"), routeFg = $("#routePath"), routeDot = $("#routeDot"), stops = $$(".stop");
+  function routeTick() {
+    if (!routeBox) return;
+    const r = routeBox.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height));
+    routeFg.style.strokeDashoffset = 1000 - p * 1000;
+    routeDot.style.top = p * r.height + "px";
+    stops.forEach(st => {
+      const sr = st.getBoundingClientRect();
+      st.classList.toggle("is-on", sr.top + 30 - r.top <= p * r.height + 2);
+    });
+  }
+  addEventListener("scroll", () => requestAnimationFrame(routeTick), { passive: true });
+  addEventListener("resize", routeTick);
+  routeTick();
+  if (reduce) stops.forEach(s => s.classList.add("is-on"));
+
+  /* IBAN anatomy */
+  const IBAN = [
+    ["TR", "Страна", "TR — Турция. Первые две буквы любого IBAN — код страны. Видишь TR — значит, счёт турецкий.", 2],
+    ["33", "Контроль", "Две контрольные цифры. Банк по ним проверяет, что ты не ошибся при вводе. Опечатка — перевод не пройдёт.", 2],
+    ["00061", "Банк", "Пять цифр — код банка. По ним видно, свой это банк (тогда havale) или чужой (тогда FAST или EFT).", 5],
+    ["0", "Резерв", "Одна резервная цифра. В Турции это ноль. Просто есть.", 1],
+    ["0519786457841326", "Счёт", "Шестнадцать цифр — номер самого счёта. Их арендодатель и ждёт.", 16]
+  ];
+  const ibCode = $("#ibanCode"), ibBars = $("#ibanBars"), ibInfo = $("#ibanInfo"), ibBox = $("#ibanBox");
+  if (ibCode) {
+    let ci = 0;
+    IBAN.forEach(([v, lab, txt, n], i) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "ib";
+      b.innerHTML = `<span>${[...v].map(ch => `<i class="ch" style="transition-delay:${(ci++) * 25}ms">${ch}</i>`).join("")}</span><small>${lab}</small>`;
+      $$(".ch", b).forEach(c => { c.style.fontStyle = "normal"; });
+      const bar = document.createElement("i"); bar.style.setProperty("--g", n); ibBars.append(bar);
+      const pick = () => {
+        $$(".ib", ibCode).forEach(x => x.classList.remove("is-on")); $$("i", ibBars).forEach(x => x.classList.remove("is-on"));
+        b.classList.add("is-on"); bar.classList.add("is-on");
+        ibInfo.innerHTML = `<b>${lab} · ${n} ${n === 1 ? "знак" : n < 5 ? "знака" : "знаков"}</b>${txt}`;
+      };
+      b.addEventListener("click", pick);
+      if (i === 0) setTimeout(pick, 0);
+      ibCode.append(b);
+    });
+    onceIn(ibBox, () => {
+      ibBox.classList.add("is-in");
+      if (reduce) return;
+      let k = 0; const btns = $$(".ib", ibCode);
+      const auto = setInterval(() => { btns[k % btns.length].click(); k++; if (k > btns.length) clearInterval(auto); }, 1400);
+      ibCode.addEventListener("click", e => { if (e.isTrusted) clearInterval(auto); });
+    });
+  }
+
+  /* transfer network */
+  const net = $("#netBox");
+  if (net) {
+    const paths = { hav: $("#pHav"), fast: $("#pFast"), eft: $("#pEft") };
+    const pks = { hav: $("#pkHav"), fast: $("#pkFast"), eft: $("#pkEft") };
+    const dur = { hav: 1600, fast: 900, eft: 4200 };
+    const CAP = {
+      day: "Будни, день: бегут все трое. EFT — не торопясь, но доходит.",
+      night: "Ночь: havale и FAST работают. EFT стоит у шлагбаума до утра.",
+      weekend: "Выходные: FAST и havale спокойно бегают. EFT ждёт понедельника."
+    };
+    let mode = "day", t0 = performance.now(), running = false;
+    $$(".seg__b[data-mode]", net).forEach(b => b.addEventListener("click", () => {
+      mode = b.dataset.mode;
+      $$(".seg__b[data-mode]", net).forEach(x => x.classList.toggle("is-on", x === b));
+      net.classList.toggle("is-wait", mode !== "day");
+      $("#netCap").textContent = CAP[mode];
+    }));
+    const place = (k, p) => {
+      const path = paths[k], L = path.getTotalLength(), pt = path.getPointAtLength(L * p);
+      pks[k].setAttribute("cx", pt.x); pks[k].setAttribute("cy", pt.y);
+    };
+    function frame(now) {
+      const t = now - t0;
+      ["hav", "fast"].forEach(k => place(k, (t % dur[k]) / dur[k]));
+      if (mode === "day") place("eft", (t % dur.eft) / dur.eft);
+      else { place("eft", .46); }
+      if (running) requestAnimationFrame(frame);
+    }
+    new IntersectionObserver(([en]) => {
+      const was = running; running = en.isIntersecting && !reduce;
+      if (running && !was) requestAnimationFrame(frame);
+      if (reduce) { place("hav", .5); place("fast", .5); place("eft", .46); }
+    }).observe(net);
+  }
+
+  /* hours chart with live "now" in Istanbul */
+  const hoursGrid = $("#hoursGrid"), hoursBox = $("#hours");
+  if (hoursGrid) {
+    const ROWS = [
+      ["HAVALE", [[0, 24]], [[0, 24]]],
+      ["FAST", [[0, 24]], [[0, 24]]],
+      ["EFT", [[9, 17]], []]
+    ];
+    ROWS.forEach(([name, wd, we]) => {
+      const row = document.createElement("div"); row.className = "hr";
+      const track = (segs, lab) => `<div><div class="hr__lab"><span>${lab}</span></div><div class="hr__track">${segs.length ? segs.map(([a, b]) => `<span class="hr__bar" style="left:${a / 24 * 100}%;width:${(b - a) / 24 * 100}%" title="${name}: ${lab.toLowerCase()} ${String(a).padStart(2, "0")}:00–${String(b).padStart(2, "0")}:00"></span>`).join("") : `<span class="hr__bar hr__bar--off" style="left:0;width:100%" title="${name}: ${lab.toLowerCase()} не работает"></span>`}</div></div>`;
+      row.innerHTML = `<span class="hr__name">${name}</span><div class="hr__tracks">${track(wd, "Будни")}${track(we, "Выходные")}</div>`;
+      hoursGrid.append(row);
+    });
+    const now = new Date();
+    const parts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Istanbul", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(now).map(p => [p.type, p.value]));
+    const h = (+parts.hour % 24) + (+parts.minute) / 60;
+    const weekend = parts.weekday === "Sat" || parts.weekday === "Sun";
+    const eftOn = !weekend && h >= 9 && h < 17;
+    const dayRu = { Mon: "понедельник", Tue: "вторник", Wed: "среда", Thu: "четверг", Fri: "пятница", Sat: "суббота", Sun: "воскресенье" }[parts.weekday];
+    $("#hoursNow").textContent = `Сейчас в Стамбуле ${parts.hour}:${parts.minute}, ${dayRu}. EFT ${eftOn ? "работает ✓" : "спит ✕ — отправляй через FAST"}`;
+    $$(".hr").forEach((row, ri) => {
+      const tracks = $$(".hr__track", row), tr = tracks[weekend ? 1 : 0];
+      const line = document.createElement("span"); line.className = "hours__now-line" + (ri === 0 ? " is-lab" : ""); line.style.left = `calc(${h / 24 * 100}% - 1px)`;
+      tr.append(line);
+    });
+    onceIn(hoursBox, () => hoursBox.classList.add("is-in"));
+  }
+
+  /* exchange board */
+  const board = $("#board");
+  if (board) {
+    const TXT = {
+      alis: "Ты <b>продаёшь</b> доллары → смотри столбец <b>ALIŞ</b> (они покупают). 100 $ × 40,00 = <b>4 000 ₺</b>.",
+      satis: "Ты <b>покупаешь</b> доллары → смотри столбец <b>SATIŞ</b> (они продают). 100 $ × 41,00 = <b>4 100 ₺</b>."
+    };
+    const setSide = side => {
+      $$(".seg__b[data-side]", board).forEach(x => x.classList.toggle("is-on", x.dataset.side === side));
+      $$("[data-col]", board).forEach(c => c.classList.toggle("is-on", c.dataset.col === side));
+      $("#boardTxt").innerHTML = TXT[side];
+    };
+    $$(".seg__b[data-side]", board).forEach(b => b.addEventListener("click", () => setSide(b.dataset.side)));
+    setSide("alis");
+    onceIn(board, () => {
+      $$(".flip", board).forEach((f, i) => {
+        const target = f.dataset.v; if (reduce) { f.textContent = target; return; }
+        let n = 0; const steps = 14 + i * 4;
+        const iv = setInterval(() => {
+          n++;
+          f.textContent = n >= steps ? target : [...target].map(ch => /\d/.test(ch) ? Math.floor(Math.random() * 10) : ch).join("");
+          if (n >= steps) clearInterval(iv);
+        }, 55);
+      });
+    });
+  }
+
+  /* platform bar chart (one series, one hue) */
+  const chartBars = $("#chartBars"), chart = $("#chart");
+  if (chartBars) {
+    const DATA = [["Материалы по уровням", 1716], ["Блоки лексики", 131], ["Гайды по грамматике", 128], ["Интерактивные ресурсы", 109], ["Гайды по работе", 36], ["Блоки по экзаменам", 32]];
+    const max = 1716, total = DATA.reduce((a, d) => a + d[1], 0), tip = $("#chartTip");
+    DATA.forEach(([name, v]) => {
+      const row = document.createElement("div"); row.className = "cb"; row.tabIndex = 0;
+      row.innerHTML = `<span class="cb__name">${name}</span><span class="cb__track"><span class="cb__bar" data-w="${v / max * 100}"></span><span class="cb__val">${v.toLocaleString("ru-RU")}</span></span>`;
+      const show = () => { chart.classList.add("has-hover"); $$(".cb", chartBars).forEach(x => x.classList.remove("is-hover")); row.classList.add("is-hover"); tip.textContent = `${name}: ${v.toLocaleString("ru-RU")} шт · ${(v / total * 100).toLocaleString("ru-RU", { maximumFractionDigits: 1 })}% от 2 152`; };
+      const hide = () => { chart.classList.remove("has-hover"); row.classList.remove("is-hover"); tip.textContent = ""; };
+      row.addEventListener("pointerenter", show); row.addEventListener("pointerleave", hide);
+      row.addEventListener("focus", show); row.addEventListener("blur", hide);
+      row.addEventListener("click", show);
+      chartBars.append(row);
+    });
+    onceIn(chart, () => {
+      $$(".cb", chartBars).forEach((row, i) => {
+        const bar = $(".cb__bar", row), val = $(".cb__val", row), w = +bar.dataset.w;
+        setTimeout(() => {
+          bar.style.width = w + "%";
+          const track = $(".cb__track", row).getBoundingClientRect().width;
+          const inside = track * w / 100 > 70;
+          val.classList.toggle("in", inside);
+          val.style.left = inside ? `calc(${w}% - ${val.offsetWidth + 8}px)` : `calc(${w}% + 8px)`;
+        }, i * 120);
+      });
+    });
+  }
+
+  /* roadmap A0 → C1 */
+  const roadSt = $("#roadSt"), roadInfo = $("#roadInfo"), road = $("#road");
+  if (roadSt) {
+    const LV = [
+      ["A0", "Старт с нуля", "Как устроен турецкий: слово растёт вправо, аффиксы вместо предлогов. Хаб A0–A2 в Notion.", ""],
+      ["A1", "Фундамент", "Алфавит и звуки, гармония гласных, первые 500 слов. Банк начинается тут: «Hesap açmak istiyorum».", "ТЫ ЗДЕСЬ"],
+      ["A2", "Быт", "Лексика по темам: деньги, еда, транспорт, больница. Мультики и подкасты уровня A2.", "ТЫ ЗДЕСЬ"],
+      ["B1", "Свободный быт", "Переводы, аренда, документы — без переводчика. Условное наклонение, причастия. Хаб B1–C1.", "ТЫ ЗДЕСЬ"],
+      ["B2", "Смысл, а не слова", "Сложные связки, книги и сериалы в оригинале. Блоки к экзамену B2.", ""],
+      ["C1", "Как носитель", "Неологизмы и нормы TDK, академический и рабочий язык. Экзамен C1 и гайды по работе.", ""]
+    ];
+    LV.forEach(([lv, t, d, here], i) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "rs" + (here ? " is-here" : "");
+      b.innerHTML = `<small>${here && i === 2 ? "БАНК" : ""}</small><i></i>${lv}`;
+      b.addEventListener("click", () => {
+        $$(".rs", roadSt).forEach(x => x.classList.remove("is-on")); b.classList.add("is-on");
+        roadInfo.innerHTML = `<b>${lv} · ${t}</b>${d}`;
+      });
+      roadSt.append(b);
+    });
+    $$(".rs", roadSt)[2].click();
+    onceIn(road, () => road.classList.add("is-in"));
+  }
+
+  /* phone fan: dots + autoplay */
+  const fanDots = $("#fanDots");
+  if (fan && fanDots) {
+    const figs = $$("figure", fan);
+    figs.forEach(() => fanDots.append(document.createElement("i")));
+    const dots = $$("i", fanDots);
+    const cur = () => { const mid = fan.scrollLeft + fan.clientWidth / 2; let best = 0, bd = 1e9; figs.forEach((f, i) => { const d = Math.abs(f.offsetLeft + f.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } }); return best; };
+    const sync = () => { const c = cur(); dots.forEach((d, i) => d.classList.toggle("is-on", i === c)); };
+    fan.addEventListener("scroll", () => requestAnimationFrame(sync), { passive: true });
+    sync();
+    let user = false, visible = false;
+    ["pointerdown", "touchstart", "wheel"].forEach(ev => fan.addEventListener(ev, () => { user = true; }, { passive: true }));
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: .4 }).observe(fan);
+    if (!reduce) setInterval(() => {
+      if (user || !visible) return;
+      const n = (cur() + 1) % figs.length, f = figs[n];
+      fan.scrollTo({ left: f.offsetLeft - (fan.clientWidth - f.offsetWidth) / 2, behavior: "smooth" });
+    }, 2600);
+  }
+
   /* ---------- wordmark letters ---------- */
   const wm = $(".wordmark");
   wm.innerHTML = [...wm.textContent].map(ch => `<span>${ch}</span>`).join("");

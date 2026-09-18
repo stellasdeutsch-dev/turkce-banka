@@ -76,6 +76,8 @@
   </div>
 </section>
 
+<div class="ticker" aria-hidden="true"><div class="ticker__row"><span>şube</span><i></i><span>sıra numarası</span><i></i><span>gişe</span><i></i><span>hesap açmak</span><i></i><span>vergi numarası</span><i></i><span>imza</span><i></i><span>şifre</span><i></i><span>dekont</span><i></i><span>masraf</span><i></i><span>havale</span><i></i><span>döviz</span><i></i></div></div>
+
 <!-- STORY: problem / solution -->
 <section class="sec dark" id="story">
   <div class="ps">
@@ -99,6 +101,30 @@
       </div>
       <a class="btn btn--ink" href="#cheat">Погнали <svg><use href="#arr"/></svg></a>
     </article>
+  </div>
+</section>
+
+<!-- ROUTE INFOGRAPHIC -->
+<section class="sec dark" id="route">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Инфографика</span><span class="pill">Маршрут</span></div>
+    <h2 class="h2 h2--light split">Твой путь по банку. Шесть остановок.</h2>
+    <p class="sub sub--light">Листай вниз. Точка идёт по маршруту, остановки загораются. На каждой — фраза, которую там услышишь.</p>
+  </div>
+  <div class="route" id="routeBox">
+    <svg class="route__svg" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
+      <path class="route__bg" d="M50 0 V1000"/>
+      <path class="route__fg" id="routePath" d="M50 0 V1000" pathLength="1000"/>
+    </svg>
+    <span class="route__dot" id="routeDot"></span>
+    <ol class="route__list">
+      <li class="stop"><span class="stop__n">01</span><div><b lang="tr">Sıramatik</b><small>автомат у входа</small><button class="say" data-say="Bireysel işlemler"><svg><use href="#spk"/></svg> Bireysel işlemler</button><em>Жми «операции для частных лиц»</em></div></li>
+      <li class="stop"><span class="stop__n">02</span><div><b lang="tr">Sıra numarası</b><small>номерок, ждёшь табло</small><button class="say" data-say="A 047 numaralı müşteri, 3 numaralı gişeye."><svg><use href="#spk"/></svg> A047 … 3 numaralı gişeye</button><em>«Клиент A047 — к окну №3». Это тебя.</em></div></li>
+      <li class="stop"><span class="stop__n">03</span><div><b lang="tr">Gişe</b><small>окошко, консультант</small><button class="say" data-say="Hesap açmak istiyorum."><svg><use href="#spk"/></svg> Hesap açmak istiyorum.</button><em>Чит-код №1 в деле</em></div></li>
+      <li class="stop"><span class="stop__n">04</span><div><b lang="tr">Kimlik + vergi no</b><small>паспорт и налоговый номер</small><button class="say" data-say="Pasaportum ve vergi numaram burada."><svg><use href="#spk"/></svg> Pasaportum ve vergi numaram burada.</button><em>Вот паспорт и налоговый номер</em></div></li>
+      <li class="stop"><span class="stop__n">05</span><div><b lang="tr">İmza + şifre</b><small>подписи и PIN</small><button class="say" data-say="Buraya imza atar mısınız?"><svg><use href="#spk"/></svg> Buraya imza atar mısınız?</button><em>Подпишите здесь. Потом задашь PIN.</em></div></li>
+      <li class="stop"><span class="stop__n">06</span><div><b lang="tr">Kart + dekont</b><small>карта и бумажка</small><button class="say" data-say="Teşekkürler, iyi çalışmalar!"><svg><use href="#spk"/></svg> Teşekkürler, iyi çalışmalar!</button><em>Спасибо, хорошей работы! Ты свободен.</em></div></li>
+    </ol>
   </div>
 </section>
 
@@ -138,7 +164,7 @@
 <section class="sec dark" id="words">
   <div class="sec__head reveal">
     <div class="pills"><span class="pill">Лексика</span><span class="pill">5 зон</span><span class="pill">40 слов</span></div>
-    <h2 class="h2 h2--light">Банк это пять зон. Проходим по порядку.</h2>
+    <h2 class="h2 h2--light split">Банк это пять зон. Проходим по порядку.</h2>
     <p class="sub sub--light">Тапни карточку, чтобы перевернуть. Тапни 🔊, чтобы услышать. Кириллица под словом — чтобы не читать «ı» как «и».</p>
   </div>
 
@@ -185,11 +211,25 @@
   </div>
 </section>
 
+<!-- IBAN ANATOMY -->
+<section class="sec dark" id="iban">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Анатомия</span><span class="pill">IBAN</span><span class="pill">26 знаков</span></div>
+    <h2 class="h2 h2--light split">IBAN — не случайные цифры. Разбираем по косточкам.</h2>
+    <p class="sub sub--light">Арендодатель скажет: <b class="tr" data-say="IBAN'ınızı gönderir misiniz?">IBAN'ınızı gönderir misiniz?</b> Тапни кусок номера — узнаешь, что он значит. Номер ниже — учебный пример.</p>
+  </div>
+  <div class="iban reveal" id="ibanBox">
+    <div class="iban__code" id="ibanCode" role="group" aria-label="Части IBAN"></div>
+    <div class="iban__bars" id="ibanBars" aria-hidden="true"></div>
+    <div class="iban__info" id="ibanInfo" aria-live="polite"></div>
+  </div>
+</section>
+
 <!-- BROTHERS: havale / eft / fast -->
 <section class="sec dark" id="brothers">
   <div class="sec__head reveal">
     <div class="pills"><span class="pill">Ловушка №1</span><span class="pill">Переводы</span></div>
-    <h2 class="h2 h2--light">Жили-были три брата. Havale, EFT и FAST.</h2>
+    <h2 class="h2 h2--light split">Жили-были три брата. Havale, EFT и FAST.</h2>
     <p class="sub sub--light">Все трое переводят деньги. Но характеры разные. Перепутаешь — перевод придёт в понедельник.</p>
   </div>
   <div class="bros">
@@ -211,6 +251,43 @@
       <button class="say" data-say="Başka bankaya EFT yaptım."><svg><use href="#spk"/></svg> Başka bankaya EFT yaptım.</button>
       <small>Сделал EFT в другой банк.</small>
     </article>
+  </div>
+  <div class="net reveal" id="netBox">
+    <div class="net__top">
+      <p class="net__h">Схема: кто куда бегает</p>
+      <div class="seg" role="group" aria-label="Когда отправляешь">
+        <button class="seg__b is-on" data-mode="day" type="button">Будни, день</button>
+        <button class="seg__b" data-mode="night" type="button">Ночь</button>
+        <button class="seg__b" data-mode="weekend" type="button">Выходные</button>
+      </div>
+    </div>
+    <svg class="net__svg" viewBox="0 0 360 250" role="img" aria-labelledby="netT">
+      <title id="netT">Схема переводов: havale внутри одного банка, FAST и EFT между банками</title>
+      <g class="net__bank" transform="translate(12 78)"><rect width="96" height="96" rx="18"/><text x="48" y="44">Banka</text><text x="48" y="64" class="net__big">A</text></g>
+      <g class="net__bank net__bank--b" transform="translate(252 78)"><rect width="96" height="96" rx="18"/><text x="48" y="44">Banka</text><text x="48" y="64" class="net__big">B</text></g>
+      <path id="pHav" class="net__p" d="M60 78 C 20 20, 100 20, 70 78"/>
+      <path id="pFast" class="net__p net__p--fast" d="M108 100 C 170 55, 190 55, 252 100"/>
+      <path id="pEft" class="net__p" d="M108 152 C 170 200, 190 200, 252 152"/>
+      <text x="58" y="18" class="net__lbl">HAVALE</text>
+      <text x="180" y="52" class="net__lbl net__lbl--m">FAST ⚡</text>
+      <text x="180" y="218" class="net__lbl">EFT</text>
+      <g id="gate" class="net__gate" transform="translate(180 188)"><rect x="-26" y="-7" width="52" height="14" rx="7"/><text y="4">🕘 ждёт</text></g>
+      <circle r="6" class="net__pk" id="pkHav"/>
+      <circle r="6" class="net__pk net__pk--m" id="pkFast"/>
+      <circle r="6" class="net__pk" id="pkEft"/>
+    </svg>
+    <p class="net__cap" id="netCap">Будни, день: бегут все трое. EFT — не торопясь.</p>
+  </div>
+
+  <div class="hours reveal" id="hours">
+    <div class="hours__top"><p class="net__h">Когда работает каждый брат</p><p class="hours__now" id="hoursNow"></p></div>
+    <div class="hours__grid" id="hoursGrid"></div>
+    <div class="hours__axis" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+    <p class="small">Схема, время по Стамбулу. Часы EFT примерные — у банков чуть отличаются. Лимит FAST меняют, смотри в приложении.</p>
+    <details class="tbl"><summary>Показать таблицей</summary>
+      <table><thead><tr><th>Способ</th><th>Будни</th><th>Выходные</th></tr></thead>
+      <tbody><tr><td>Havale</td><td>круглосуточно</td><td>круглосуточно</td></tr><tr><td>FAST</td><td>круглосуточно, до лимита</td><td>круглосуточно, до лимита</td></tr><tr><td>EFT</td><td>≈ 09:00–17:00</td><td>не работает</td></tr></tbody></table>
+    </details>
   </div>
   <p class="foot-note reveal">Точный лимит FAST смотри в своём приложении. Его периодически меняют. А IBAN у всех братьев общий: <b class="tr" data-say="IBAN numaranızı alabilir miyim?">IBAN numaranızı alabilir miyim?</b> — «Можно ваш IBAN?»</p>
 </section>
@@ -249,6 +326,25 @@
     <p class="money-trap__big"><span class="tr" data-say="masraf">masraf</span> = <span class="tr" data-say="komisyon">komisyon</span> = комиссия</p>
     <p>Если в окошке прозвучало <b>masraf</b>, а ты кивнул — ты только что согласился заплатить. Спрашивай до, а не после: <b class="tr" data-say="Masraf var mı?">Masraf var mı?</b> — Есть комиссия?</p>
   </div>
+  <div class="board reveal" id="board">
+    <div class="board__top">
+      <p class="trap__n">06 · Табло обменника</p>
+      <div class="seg seg--l" role="group" aria-label="Что делаешь">
+        <button class="seg__b is-on" data-side="alis" type="button">Я продаю $</button>
+        <button class="seg__b" data-side="satis" type="button">Я покупаю $</button>
+      </div>
+    </div>
+    <div class="board__panel">
+      <div class="board__row board__head"><span>DÖVİZ</span><span data-col="alis">ALIŞ</span><span data-col="satis">SATIŞ</span></div>
+      <div class="board__row"><span>🇺🇸 USD</span><span class="flip" data-col="alis" data-v="40,00">00,00</span><span class="flip" data-col="satis" data-v="41,00">00,00</span></div>
+      <div class="board__row"><span>🇪🇺 EUR</span><span class="flip" data-col="alis" data-v="46,00">00,00</span><span class="flip" data-col="satis" data-v="47,00">00,00</span></div>
+    </div>
+    <div class="board__calc">
+      <p id="boardTxt"></p>
+      <div class="spread" aria-hidden="true"><span class="spread__a">alış 40,00</span><span class="spread__gap">разница = заработок обменника</span><span class="spread__s">satış 41,00</span></div>
+    </div>
+    <p class="small">Курсы на табло условные — только чтобы показать логику. Реальный курс смотри в день обмена.</p>
+  </div>
 </section>
 
 <!-- DIALOG -->
@@ -272,7 +368,7 @@
 <section class="sec light" id="quiz">
   <div class="sec__head reveal">
     <div class="pills"><span class="pill pill--d">Тест</span><span class="pill pill--d">6 вопросов</span><span class="pill pill--d">Без регистрации</span></div>
-    <h2 class="h2">Проверим, будешь ли ты кивать.</h2>
+    <h2 class="h2 split">Проверим, будешь ли ты кивать.</h2>
   </div>
   <div class="quiz reveal" id="quizBox">
     <div class="quiz__top"><span id="qNum">1 / 6</span><div class="quiz__bar"><span id="qBar"></span></div></div>
@@ -316,6 +412,8 @@
   <p class="punch reveal">Выучи 20 слов с этой страницы. В следующий раз ты не киваешь. Ты отвечаешь.</p>
 </section>
 
+<div class="ticker ticker--mint" aria-hidden="true"><div class="ticker__row"><span>128 гайдов</span><i></i><span>131 блок лексики</span><i></i><span>109 интерактивов</span><i></i><span>32 блока экзаменов</span><i></i><span>36 гайдов по работе</span><i></i><span>1716 материалов</span><i></i><span>$30 навсегда</span><i></i></div></div>
+
 <!-- ========== PLATFORM ========== -->
 <section class="sec dark plat-intro" id="platform">
   <div class="pills pills--top reveal">
@@ -344,7 +442,7 @@
 
 <section class="sec dark" id="numbers">
   <div class="sec__head reveal">
-    <h2 class="h2 h2--light">Что внутри. Без «откройте страницу 42».</h2>
+    <h2 class="h2 h2--light split">Что внутри. Без «откройте страницу 42».</h2>
   </div>
   <div class="scope">
     <article class="sc sc--d reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="128">0</span></p><p class="sc__t">гайдов по грамматике</p><p class="sc__s">Разбираю как здесь. Живым языком, с примерами.</p></article>
@@ -354,6 +452,30 @@
     <article class="sc sc--w reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="36">0</span></p><p class="sc__t">гайдов по работе</p><p class="sc__s">Для тех, кто ищет работу. Или уже пашет.</p></article>
     <article class="sc sc--m reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="1716">0</span></p><p class="sc__t">материалов по уровням</p><p class="sc__s">Фильмы, книги, мультики, подкасты, приложения, YouTube.</p></article>
   </div>
+  <div class="chart reveal" id="chart">
+    <div class="chart__top"><p class="net__h">Из чего сложены 2 152 единицы</p><p class="chart__sum">одна шкала · штук</p></div>
+    <div class="chart__bars" id="chartBars"></div>
+    <div class="chart__tip" id="chartTip" role="status"></div>
+    <details class="tbl"><summary>Показать таблицей</summary>
+      <table><thead><tr><th>Раздел</th><th>Штук</th></tr></thead><tbody>
+      <tr><td>Материалы по уровням</td><td>1716</td></tr><tr><td>Блоки лексики</td><td>131</td></tr><tr><td>Гайды по грамматике</td><td>128</td></tr><tr><td>Интерактивные ресурсы</td><td>109</td></tr><tr><td>Гайды по работе</td><td>36</td></tr><tr><td>Блоки по экзаменам</td><td>32</td></tr></tbody></table>
+    </details>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="sec light grid-lines" id="levels">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">Карта уровней</span><span class="pill pill--d">A0 → C1</span></div>
+    <h2 class="h2 split">Ты здесь. А вот куда можно дойти.</h2>
+    <p class="sub">Банк — это уровень A1–B1. Тапни станцию, чтобы увидеть, что там.</p>
+  </div>
+  <div class="road reveal" id="road">
+    <svg class="road__svg" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true"><path id="roadPath" d="M20 90 C 120 90, 140 30, 240 30 S 380 90, 480 60 S 560 20, 580 20" pathLength="100"/></svg>
+    <div class="road__st" id="roadSt"></div>
+    <div class="road__info" id="roadInfo" aria-live="polite"></div>
+  </div>
+  <figure class="road__phone reveal"><img src="media/phone/1962.webp" alt="Экран уровня A1 «Фундамент»: алфавит и звуки, гармония гласных, первые 500 слов" loading="lazy"><figcaption>Так выглядит ступень A1 «Фундамент» на телефоне</figcaption></figure>
 </section>
 
 <!-- NOTION WALL -->
@@ -375,7 +497,7 @@
 <section class="sec dark" id="video">
   <div class="sec__head reveal">
     <div class="pills"><span class="pill">Запись экрана</span><span class="pill">Без монтажа</span></div>
-    <h2 class="h2 h2--light">Не веришь цифрам? Смотри экран.</h2>
+    <h2 class="h2 h2--light split">Не веришь цифрам? Смотри экран.</h2>
   </div>
   <div class="vids" id="vids">
     <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/reading.jpg"><source src="media/video/reading.mp4" type="video/mp4"></video><figcaption><b>Тексты с лексикой</b>Слова подсвечены прямо в истории. Нажал — понял.</figcaption></figure>
@@ -392,16 +514,18 @@
   <div class="sec__head reveal">
     <div class="pills"><span class="pill pill--d">С телефона</span><span class="pill pill--d">В дороге</span></div>
     <h2 class="h2">Работает в браузере. В автобусе, в очереди в банк, где угодно.</h2>
-    <p class="sub">Листай. Это реальные скриншоты с айфона.</p>
+    <p class="sub">Листай или жди — сами поедут. Это реальные скриншоты с айфона.</p>
   </div>
   <div class="fan" id="fan">
-    <figure><img src="media/phone/1915.webp" alt="Каталог YouTube по уровням" loading="lazy"><figcaption>YouTube по уровням</figcaption></figure>
-    <figure><img src="media/phone/1937.webp" alt="Карточка мультфильма Buz Devri 2 с уровнем" loading="lazy"><figcaption>Мультики с уровнем</figcaption></figure>
-    <figure><img src="media/phone/1943.webp" alt="Alterna Kitap — книги на турецком" loading="lazy"><figcaption>Книги</figcaption></figure>
-    <figure><img src="media/phone/1946.webp" alt="Карточка подкаста Yoldayız, Geliyor musun?" loading="lazy"><figcaption>Подкасты</figcaption></figure>
-    <figure><img src="media/phone/1954.webp" alt="Маршрут уровня A1 «Фундамент»" loading="lazy"><figcaption>Маршрут A1</figcaption></figure>
-    <figure><img src="media/phone/1940.webp" alt="Карточка сериала Maysa ve Bulut" loading="lazy"><figcaption>Сериалы</figcaption></figure>
+    <figure><img src="media/phone/1917.webp" alt="Лестница CEFR: уровни A1, A2, B1, B2, C1" loading="lazy"><figcaption>Лестница CEFR</figcaption></figure>
+    <figure><img src="media/phone/1921.webp" alt="Каталог видео с уровнем у каждого ролика" loading="lazy"><figcaption>Видео с уровнем</figcaption></figure>
+    <figure><img src="media/phone/1926.webp" alt="Каталог в цифрах и графиках: жанры материалов, воронка" loading="lazy"><figcaption>Каталог в цифрах</figcaption></figure>
+    <figure><img src="media/phone/1927.webp" alt="Тепловая карта: уровни и жанры" loading="lazy"><figcaption>Тепловая карта уровней</figcaption></figure>
+    <figure><img src="media/phone/1932.webp" alt="Alterna Çizgi: турецкий, который понятен с первого раза" loading="lazy"><figcaption>Alterna Çizgi</figcaption></figure>
+    <figure><img src="media/phone/1947.webp" alt="Alterna Kitap: как менялся язык в книгах" loading="lazy"><figcaption>Alterna Kitap</figcaption></figure>
+    <figure><img src="media/phone/1950.webp" alt="Маршрут школы: от первых слов до речи, которую не нужно переводить" loading="lazy"><figcaption>Маршрут до свободной речи</figcaption></figure>
   </div>
+  <div class="fan-dots" id="fanDots" aria-hidden="true"></div>
 </section>
 
 <!-- VALUE / FEATURES like 4 cards -->
