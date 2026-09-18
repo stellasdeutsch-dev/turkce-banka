@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Турецкий в банке · Alterna Timur</title>
+<meta name="description" content="Лексика «В банке» на турецком: счёт, карта, перевод, банкомат, обмен валют. Озвучка, тренажёры, диалог у окошка и тест. Плюс платформа Alterna Timur A0 → C1.">
+<meta name="theme-color" content="#010101">
+<meta property="og:title" content="В турецком банке без паники · Alterna Timur">
+<meta property="og:description" content="Хесап ачмак истийорум. 40 слов и 2 чит-кода, чтобы не кивать у окошка.">
+<meta property="og:image" content="media/video/reading.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 24 24"><path d="M6 3.5h12M6 20.5h12M3.5 6v12M20.5 6v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/><rect x="1.8" y="1.8" width="4.4" height="4.4" rx=".6" fill="currentColor"/><rect x="17.8" y="1.8" width="4.4" height="4.4" rx=".6" fill="currentColor"/><rect x="1.8" y="17.8" width="4.4" height="4.4" rx=".6" fill="currentColor"/><rect x="17.8" y="17.8" width="4.4" height="4.4" rx=".6" fill="currentColor"/></symbol>
+  <symbol id="spk" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Alterna Timur — наверх">
+    <svg class="mk"><use href="#mark"/></svg><span>alterna</span>
+  </a>
+  <nav class="nav__links" aria-label="Разделы">
+    <a href="#story">История</a><a href="#cheat">Чит-коды</a><a href="#words">Слова</a><a href="#dialog">Диалог</a><a href="#quiz">Тест</a><a href="#platform">Платформа</a>
+  </nav>
+  <a class="nav__buy" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="nav">A0→C1 · $30 <svg><use href="#arr"/></svg></a>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero dark" id="hero">
+  <div class="pills pills--top">
+    <div><span class="pill" lang="tr">Şube</span><span class="pill" lang="tr">Gişe</span><span class="pill" lang="tr">Sıra</span></div>
+    <div class="hide-sm"><span class="pill" lang="tr">Hesap</span><span class="pill" lang="tr">Kart</span><span class="pill" lang="tr">Döviz</span></div>
+  </div>
+
+  <div class="hero__stage">
+    <div class="hero__word" aria-hidden="true">banka</div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="card3d" id="card3d" aria-hidden="true">
+      <div class="card3d__in">
+        <div class="card3d__chip"></div>
+        <svg class="card3d__mk"><use href="#mark"/></svg>
+        <div class="card3d__num">TR•• 0010 •••• 2026</div>
+        <div class="card3d__row" lang="tr"><span>TÜRKÇE · BANKA KARTI</span><span>A0→C1</span></div>
+        <div class="card3d__shine"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__copy">
+    <p class="kicker"><svg class="mk"><use href="#mark"/></svg> Лексика · A1–B1 · 7 минут</p>
+    <h1>В турецком банке <em>без паники.</em> За&nbsp;один заход.</h1>
+    <p class="lead">Счёт, карта, перевод, банкомат, обмен. 40 слов, два чит-кода и один диалог у окошка. Всё с озвучкой.</p>
+    <div class="hero__btns">
+      <a class="btn btn--mint magnetic" href="#story">Начать разбор <svg><use href="#arr"/></svg></a>
+      <a class="btn btn--ghost" href="#platform">Что за платформа?</a>
+    </div>
+  </div>
+
+  <div class="keys" aria-label="Турецкие буквы: нажми, чтобы услышать">
+    <p class="keys__hint">Семь букв, которых нет в английском. Жми.</p>
+    <div class="keys__row" id="keys"></div>
+    <p class="keys__out" id="keysOut" aria-live="polite">&nbsp;</p>
+  </div>
+</section>
+
+<!-- STORY: problem / solution -->
+<section class="sec dark" id="story">
+  <div class="ps">
+    <article class="ps__card ps__card--dark reveal">
+      <p class="ps__label">Проблема</p>
+      <h2>Я кивнул. Уверенно. И пришёл в банк ещё два раза.</h2>
+      <div class="prose">
+        <p>Первая неделя в Анталье. TÖMER ещё не начался. Стипендия вот-вот. Нужен счёт.</p>
+        <p>Захожу в банк. У входа автомат. Выплёвывает бумажку с номером. Сажусь. Жду. Над окошками мигают цифры. Меня вызывают. Я не понимаю, что это меня.</p>
+        <p>Подхожу. Тётенька спрашивает: <b class="tr" data-say="Vergi numaranız var mı?">Vergi numaranız var mı?</b></p>
+        <p>Я киваю. Потому что кивать проще, чем признаться.</p>
+        <p>Оказалось, это налоговый номер. Его у меня не было. Пришёл второй раз. Потом третий.</p>
+      </div>
+    </article>
+    <article class="ps__card ps__card--mint reveal">
+      <p class="ps__label">Решение</p>
+      <h2>Банк в Турции не страшный. Страшно кивать на слова, которых не знаешь.</h2>
+      <div class="prose">
+        <p>Хорошая новость. Банковский турецкий очень узкий. Одни и те же 40 слов. Одни и те же 5 ситуаций. Два шаблона фраз.</p>
+        <p>Выучил один раз. Работает в любом банке, от Стамбула до Анталии.</p>
+      </div>
+      <a class="btn btn--ink" href="#cheat">Погнали <svg><use href="#arr"/></svg></a>
+    </article>
+  </div>
+</section>
+
+<!-- CHEAT CODES -->
+<section class="sec light grid-lines" id="cheat">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">Чит-код №1</span><span class="pill pill--d" lang="tr">-mak istiyorum</span></div>
+    <h2 class="h2">Одна конструкция открывает почти все двери в банке.</h2>
+    <p class="sub">Берёшь глагол целиком, как в словаре. С <b>-mak/-mek</b> на конце. Ставишь после него <b>istiyorum</b>. Всё. Ты сказал «я хочу…». Сам глагол спрягать не надо. Турецкий иногда бывает добрым.</p>
+  </div>
+
+  <div class="builder reveal">
+    <p class="builder__label">Собери фразу. Тапни глагол:</p>
+    <div class="chips" id="verbChips" role="group" aria-label="Выбор действия"></div>
+    <div class="builder__out">
+      <div class="builder__tr"><span id="bVerb">Hesap açmak</span> <span class="mintmark">istiyorum.</span></div>
+      <div class="builder__ru" id="bRu">Я хочу открыть счёт.</div>
+      <div class="builder__cy" id="bCy">Хесап ачмак истийорум</div>
+      <button class="say say--lg" id="bSay" type="button"><svg><use href="#spk"/></svg> Послушать</button>
+    </div>
+  </div>
+
+  <div class="sec__head reveal" style="margin-top:56px">
+    <div class="pills"><span class="pill pill--d">Чит-код №2</span><span class="pill pill--d" lang="tr">alabilir miyim?</span></div>
+    <h2 class="h2">А это вежливое «можно мне…?»</h2>
+    <p class="sub">Существительное плюс <b>alabilir miyim?</b> Работает с любой бумажкой, которую ты хочешь унести из банка. И с ручкой. Ручка в турецком банке всегда на цепочке. Не спрашивай.</p>
+  </div>
+  <div class="mini-list reveal">
+    <button class="mini" data-say="Sıra numarası alabilir miyim?"><b>Sıra numarası alabilir miyim?</b><span>Можно номерок очереди?</span></button>
+    <button class="mini" data-say="Dekont alabilir miyim?"><b>Dekont alabilir miyim?</b><span>Можно квитанцию о переводе?</span></button>
+    <button class="mini" data-say="Bir kalem alabilir miyim?"><b>Bir kalem alabilir miyim?</b><span>Можно ручку? (которая на цепочке)</span></button>
+    <button class="mini" data-say="Hesap özeti alabilir miyim?"><b>Hesap özeti alabilir miyim?</b><span>Можно выписку по счёту?</span></button>
+  </div>
+</section>
+
+<!-- WORDS: scope-of-work zones -->
+<section class="sec dark" id="words">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Лексика</span><span class="pill">5 зон</span><span class="pill">40 слов</span></div>
+    <h2 class="h2 h2--light">Банк это пять зон. Проходим по порядку.</h2>
+    <p class="sub sub--light">Тапни карточку, чтобы перевернуть. Тапни 🔊, чтобы услышать. Кириллица под словом — чтобы не читать «ı» как «и».</p>
+  </div>
+
+  <div class="zones reveal" id="zones" role="tablist" aria-label="Зоны банка"></div>
+  <div class="zone-note" id="zoneNote"></div>
+  <div class="words" id="wordGrid"></div>
+</section>
+
+<!-- PHONE APP -->
+<section class="sec light" id="app">
+  <div class="app-wrap">
+    <div class="app-copy reveal">
+      <svg class="mk mk--lg"><use href="#mark"/></svg>
+      <h2 class="h2">Приложение банка. Созданное, чтобы пугать иностранцев.</h2>
+      <p class="sub">Шучу. Там 10 слов. Тапни любой элемент на экране — увидишь перевод. Или переключи язык целиком.</p>
+      <div class="toggle" role="group" aria-label="Язык интерфейса">
+        <button class="toggle__b is-on" data-lang="tr" type="button">Türkçe</button>
+        <button class="toggle__b" data-lang="ru" type="button">Русский</button>
+      </div>
+      <p class="tip" id="appTip" aria-live="polite">Тапни «Toplam bakiye».</p>
+      <div class="pills"><span class="pill pill--d">Легко</span><span class="pill pill--d">Без паники</span></div>
+    </div>
+
+    <div class="phone reveal" id="phone">
+      <div class="phone__notch"></div>
+      <div class="phone__scr">
+        <div class="ap-top"><div class="ap-ava">T</div><div><small class="t" data-tr="Hoş geldin" data-ru="Добро пожаловать" data-cy="хош гельдин">Hoş geldin</small><b>Timur</b></div><span class="ap-bell">•</span></div>
+        <div class="ap-card"><span class="t" data-tr="Toplam bakiye" data-ru="Общий баланс" data-cy="топлам бакийе">Toplam bakiye</span><strong id="bal">₺0,00</strong><svg class="mk"><use href="#mark"/></svg></div>
+        <div class="ap-btns">
+          <button class="ap-b ap-b--mint t" data-tr="Para iste" data-ru="Запросить деньги" data-cy="пара исте">Para iste</button>
+          <button class="ap-b t" data-tr="Para gönder" data-ru="Отправить деньги" data-cy="пара гёндер">Para gönder</button>
+        </div>
+        <div class="ap-h t" data-tr="Son işlemler" data-ru="Последние операции" data-cy="сон ишлемлер">Son işlemler</div>
+        <ul class="ap-list">
+          <li><span class="t" data-tr="Burs" data-ru="Стипендия" data-cy="бурс">Burs</span><em class="plus">+₺7.500</em></li>
+          <li><span class="t" data-tr="Kira" data-ru="Аренда" data-cy="кира">Kira</span><em>−₺12.000</em></li>
+          <li><span class="t" data-tr="Market alışverişi" data-ru="Покупки в супермаркете" data-cy="маркет алышверишы">Market alışverişi</span><em>−₺1.440</em></li>
+          <li><span class="t" data-tr="Gelen havale" data-ru="Входящий перевод" data-cy="гелен хавале">Gelen havale</span><em class="plus">+₺750</em></li>
+          <li><span class="t" data-tr="Hesap işletim ücreti" data-ru="Плата за обслуживание счёта" data-cy="хесап ишлетим юджрети">Hesap işletim ücreti</span><em>−₺85</em></li>
+        </ul>
+        <nav class="ap-nav"><span class="t" data-tr="Ana sayfa" data-ru="Главная" data-cy="ана сайфа">Ana sayfa</span><span class="t" data-tr="Kartlarım" data-ru="Мои карты" data-cy="картларым">Kartlarım</span><span class="t" data-tr="Ödemeler" data-ru="Платежи" data-cy="ёдемелер">Ödemeler</span></nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BROTHERS: havale / eft / fast -->
+<section class="sec dark" id="brothers">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Ловушка №1</span><span class="pill">Переводы</span></div>
+    <h2 class="h2 h2--light">Жили-были три брата. Havale, EFT и FAST.</h2>
+    <p class="sub sub--light">Все трое переводят деньги. Но характеры разные. Перепутаешь — перевод придёт в понедельник.</p>
+  </div>
+  <div class="bros">
+    <article class="bro reveal" data-n="01">
+      <h3>HAVALE</h3><p class="bro__role">Младший. Домосед.</p>
+      <p>Из своего банка никуда не выходит. Перевод внутри одного банка. Быстро, без драмы.</p>
+      <button class="say" data-say="Arkadaşıma havale yaptım."><svg><use href="#spk"/></svg> Arkadaşıma havale yaptım.</button>
+      <small>Я перевёл другу (в тот же банк).</small>
+    </article>
+    <article class="bro bro--mint reveal" data-n="02">
+      <h3>FAST</h3><p class="bro__role">Средний. Спортсмен.</p>
+      <p>Бегает между банками. Мгновенно. Даже ночью, даже в воскресенье. Но есть лимит по сумме. Что не поднял — отдаёт старшему.</p>
+      <button class="say" data-say="Parayı FAST ile gönderdim."><svg><use href="#spk"/></svg> Parayı FAST ile gönderdim.</button>
+      <small>Отправил деньги через FAST.</small>
+    </article>
+    <article class="bro reveal" data-n="03">
+      <h3>EFT</h3><p class="bro__role">Старший. Чиновник.</p>
+      <p>Между разными банками. Любую сумму. Но работает по графику. Отправил в пятницу вечером — жди рабочий день.</p>
+      <button class="say" data-say="Başka bankaya EFT yaptım."><svg><use href="#spk"/></svg> Başka bankaya EFT yaptım.</button>
+      <small>Сделал EFT в другой банк.</small>
+    </article>
+  </div>
+  <p class="foot-note reveal">Точный лимит FAST смотри в своём приложении. Его периодически меняют. А IBAN у всех братьев общий: <b class="tr" data-say="IBAN numaranızı alabilir miyim?">IBAN numaranızı alabilir miyim?</b> — «Можно ваш IBAN?»</p>
+</section>
+
+<!-- TRAPS -->
+<section class="sec light grid-lines" id="traps">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">Ловушки</span><span class="pill pill--d">2–4</span></div>
+    <h2 class="h2">Три слова, на которых все спотыкаются.</h2>
+  </div>
+  <div class="traps">
+    <article class="trap reveal">
+      <p class="trap__n">02 · Банкомат-людоед</p>
+      <h3 class="tr" data-say="ATM kartımı yuttu.">ATM kartımı yuttu.</h3>
+      <p class="trap__cy">атэмэ картымы ютту</p>
+      <p>Дословно: «банкомат проглотил мою карту». Не «не вернул», не «задержал». Съел. Прожевал. Честная турецкая формулировка.</p>
+      <p>Три раза ввёл неправильный <b>şifre</b>? Готовь фразу: <b class="tr" data-say="Kartım bloke oldu.">Kartım bloke oldu.</b> — Карта заблокирована.</p>
+    </article>
+    <article class="trap trap--ink reveal">
+      <p class="trap__n">03 · Сломанные деньги</p>
+      <h3 class="tr" data-say="Bozuk paranız var mı?">Bozuk paranız var mı?</h3>
+      <p class="trap__cy">бозук параныз вар мы</p>
+      <p><b>Bozuk</b> — это «сломанный». <b>Bozuk para</b> — мелочь. Для турка сдача это просто сломанные деньги.</p>
+      <p>Отсюда <b>bozdurmak</b> — «разменять, обменять». <b class="tr" data-say="Dolar bozdurmak istiyorum.">Dolar bozdurmak istiyorum.</b> — Хочу обменять доллары. Видишь? Снова чит-код №1.</p>
+    </article>
+    <article class="trap reveal">
+      <p class="trap__n">04 · Национальный спорт</p>
+      <h3 class="tr" data-say="Kaç taksit yapabilirsiniz?">Kaç taksit yapabilirsiniz?</h3>
+      <p class="trap__cy">кач таксит япабилирсиниз</p>
+      <p><b>Taksit</b> — рассрочка. В Турции в рассрочку берут телефон, диван, иногда кажется, что и хлеб. На кассе тебя спросят: <b class="tr" data-say="Tek çekim mi, taksit mi?">Tek çekim mi, taksit mi?</b> — Одним платежом или в рассрочку?</p>
+      <p>Спокойно отвечай <b>tek çekim</b>. Если, конечно, это не диван.</p>
+    </article>
+  </div>
+  <div class="money-trap reveal">
+    <p class="trap__n">05 · Ловушка, которая стоит денег</p>
+    <p class="money-trap__big"><span class="tr" data-say="masraf">masraf</span> = <span class="tr" data-say="komisyon">komisyon</span> = комиссия</p>
+    <p>Если в окошке прозвучало <b>masraf</b>, а ты кивнул — ты только что согласился заплатить. Спрашивай до, а не после: <b class="tr" data-say="Masraf var mı?">Masraf var mı?</b> — Есть комиссия?</p>
+  </div>
+</section>
+
+<!-- DIALOG -->
+<section class="sec dark" id="dialog">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Диалог</span><span class="pill">У окошка</span><span class="pill">Выбирай ответ</span></div>
+    <h2 class="h2 h2--light">Открываем счёт. Вживую.</h2>
+    <p class="sub sub--light">Сотрудник говорит. Ты выбираешь ответ. Каждую реплику можно послушать. Перевод — по кнопке.</p>
+  </div>
+  <div class="chat reveal">
+    <div class="chat__bar">
+      <span class="chat__who"><i></i> Gişe 3 · Müşteri temsilcisi</span>
+      <label class="sw"><input type="checkbox" id="chatRu" checked> <span>Перевод</span></label>
+    </div>
+    <div class="chat__log" id="chatLog" aria-live="polite"></div>
+    <div class="chat__opts" id="chatOpts"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="sec light" id="quiz">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">Тест</span><span class="pill pill--d">6 вопросов</span><span class="pill pill--d">Без регистрации</span></div>
+    <h2 class="h2">Проверим, будешь ли ты кивать.</h2>
+  </div>
+  <div class="quiz reveal" id="quizBox">
+    <div class="quiz__top"><span id="qNum">1 / 6</span><div class="quiz__bar"><span id="qBar"></span></div></div>
+    <h3 class="quiz__q" id="qText"></h3>
+    <div class="quiz__opts" id="qOpts"></div>
+    <p class="quiz__fb" id="qFb" aria-live="polite"></p>
+  </div>
+  <div class="quiz-res" id="quizRes" hidden>
+    <p class="quiz-res__score" id="qScore">6/6</p>
+    <h3 id="qVerdict"></h3>
+    <p id="qMsg"></p>
+    <div class="hero__btns">
+      <a class="btn btn--ink" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="quiz">Забрать платформу · $30 <svg><use href="#arr"/></svg></a>
+      <button class="btn btn--line" id="qAgain" type="button">Ещё раз</button>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEET POSTS (mint presentation panel) -->
+<section class="sec dark" id="sheet">
+  <div class="mintpanel reveal">
+    <div class="mintpanel__top"><span>ШПАРГАЛКА · СОХРАНИ СЕБЕ</span><span>2026</span></div>
+    <div class="posts">
+      <article class="post">
+        <div class="post__h"><span class="post__ava"><svg><use href="#mark"/></svg></span>alterna.timur <i>✓</i></div>
+        <div class="post__body post__body--ink"><p class="post__big">Хочу X</p><p class="post__mid">X-mak istiyorum.</p><p class="post__sm">hesap açmak · para çekmek · para yatırmak · dolar bozdurmak</p></div>
+        <div class="post__f">♡ &nbsp;➤ &nbsp;◯<span>▯</span></div>
+      </article>
+      <article class="post">
+        <div class="post__h"><span class="post__ava"><svg><use href="#mark"/></svg></span>alterna.timur <i>✓</i></div>
+        <div class="post__body"><p class="post__big">Три брата</p><p class="post__mid">havale · FAST · EFT</p><p class="post__sm">свой банк · мгновенно между банками · между банками по графику</p></div>
+        <div class="post__f">♡ &nbsp;➤ &nbsp;◯<span>▯</span></div>
+      </article>
+      <article class="post">
+        <div class="post__h"><span class="post__ava"><svg><use href="#mark"/></svg></span>alterna.timur <i>✓</i></div>
+        <div class="post__body post__body--ink"><p class="post__big">Не кивай на</p><p class="post__mid">masraf · şifre · imza</p><p class="post__sm">комиссия · PIN-код · подпись. Три слова, которые стоят денег и нервов.</p></div>
+        <div class="post__f">♡ &nbsp;➤ &nbsp;◯<span>▯</span></div>
+      </article>
+    </div>
+  </div>
+  <p class="punch reveal">Выучи 20 слов с этой страницы. В следующий раз ты не киваешь. Ты отвечаешь.</p>
+</section>
+
+<!-- ========== PLATFORM ========== -->
+<section class="sec dark plat-intro" id="platform">
+  <div class="pills pills--top reveal">
+    <div><span class="pill">Digital</span><span class="pill">A0 → C1</span><span class="pill" lang="tr">Türkçe</span></div>
+    <div class="hide-sm"><span class="pill">Один платёж</span><span class="pill">Навсегда</span></div>
+  </div>
+  <div class="quote reveal">
+    <img src="media/logo.webp" alt="" class="quote__ava" width="96" height="96" loading="lazy">
+    <p class="quote__name">Тимур Ахметов</p>
+    <p class="quote__role">Автор Alterna Timur · Akdeniz Üniversitesi, Анталья</p>
+    <blockquote>«Этот банк — одна тема из ста тридцати одной. Завтра будет аптека. Потом арендодатель. Потом экзамен. Я собрал всё, что искал сам, когда приехал в Турцию. Чтобы ты не искал.»</blockquote>
+  </div>
+  <div class="ps">
+    <article class="ps__card ps__card--dark reveal">
+      <p class="ps__label">Проблема</p>
+      <h2>Материалов по турецкому море. Ты тонешь не в языке, а в поиске.</h2>
+      <p class="muted">Вечер ушёл на выбор сериала под уровень. Второй — на поиск нормального подкаста. Третий — на таблицу аффиксов, которая противоречит предыдущей. Язык за это время не сдвинулся.</p>
+    </article>
+    <article class="ps__card ps__card--mint reveal">
+      <p class="ps__label">Решение</p>
+      <h2>Alterna Timur A0 → C1. Всё уже собрано. Открываешь уровень и берёшь.</h2>
+      <p>Грамматика, лексика, тексты, мультики, книги, подкасты, экзамены и работа. По уровням. В одном месте.</p>
+    </article>
+  </div>
+</section>
+
+<section class="sec dark" id="numbers">
+  <div class="sec__head reveal">
+    <h2 class="h2 h2--light">Что внутри. Без «откройте страницу 42».</h2>
+  </div>
+  <div class="scope">
+    <article class="sc sc--d reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="128">0</span></p><p class="sc__t">гайдов по грамматике</p><p class="sc__s">Разбираю как здесь. Живым языком, с примерами.</p></article>
+    <article class="sc sc--w reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="131">0</span></p><p class="sc__t">блок лексики по темам</p><p class="sc__s">Не список слов, а то, что реально говорят. Деньги, больница, транспорт.</p></article>
+    <article class="sc sc--m reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="109">0</span></p><p class="sc__t">интерактивных ресурсов</p><p class="sc__s">Слова, тексты, диалоги, аудирование, игры на запоминание.</p></article>
+    <article class="sc sc--d reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="32">0</span></p><p class="sc__t">блока по экзаменам</p><p class="sc__s">A1, A2, B1, B2, C1. По каждому отдельно.</p></article>
+    <article class="sc sc--w reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="36">0</span></p><p class="sc__t">гайдов по работе</p><p class="sc__s">Для тех, кто ищет работу. Или уже пашет.</p></article>
+    <article class="sc sc--m reveal"><svg class="mk"><use href="#mark"/></svg><p class="sc__n"><span class="count" data-to="1716">0</span></p><p class="sc__t">материалов по уровням</p><p class="sc__s">Фильмы, книги, мультики, подкасты, приложения, YouTube.</p></article>
+  </div>
+</section>
+
+<!-- NOTION WALL -->
+<section class="sec light" id="notion">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">Реальные скрины</span><span class="pill pill--d">Notion</span></div>
+    <h2 class="h2">Вот как это выглядит изнутри. Никаких макетов.</h2>
+    <p class="sub">Видишь блок «Деньги»? Банк, который ты только что прошёл, живёт там. Рядом ещё 130 тем.</p>
+  </div>
+  <div class="tabs reveal" id="notionTabs" role="tablist"></div>
+  <figure class="shot reveal" id="notionShot">
+    <div class="shot__bar"><i></i><i></i><i></i><span id="notionUrl">notion · A0-A1-A2 Alterna / Лексика</span></div>
+    <div class="shot__img"><img id="notionImg" src="media/notion/lexika-money.webp" alt="Раздел «Лексика» уровня A0–A2 с карточкой «Деньги»" loading="lazy"><span class="shot__hl" id="notionHl"></span></div>
+    <figcaption id="notionCap">Лексика A0–A2. Карточка «Деньги» — твой банк.</figcaption>
+  </figure>
+</section>
+
+<!-- VIDEO -->
+<section class="sec dark" id="video">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill">Запись экрана</span><span class="pill">Без монтажа</span></div>
+    <h2 class="h2 h2--light">Не веришь цифрам? Смотри экран.</h2>
+  </div>
+  <div class="vids" id="vids">
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/reading.jpg"><source src="media/video/reading.mp4" type="video/mp4"></video><figcaption><b>Тексты с лексикой</b>Слова подсвечены прямо в истории. Нажал — понял.</figcaption></figure>
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/guide.jpg"><source src="media/video/guide.mp4" type="video/mp4"></video><figcaption><b>Разборы грамматики</b>Как этот гайд, только про аффиксы и времена.</figcaption></figure>
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/cizgi.jpg"><source src="media/video/cizgi.mp4" type="video/mp4"></video><figcaption><b>Alterna Çizgi</b>138 мультфильмов по уровням. 70 подходят с нуля.</figcaption></figure>
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/apps.jpg"><source src="media/video/apps.mp4" type="video/mp4"></video><figcaption><b>Alterna Uygulama</b>143 сервиса, 72 полностью бесплатных. Собрано по уровням.</figcaption></figure>
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/podcasts.jpg"><source src="media/video/podcasts.mp4" type="video/mp4"></video><figcaption><b>Alterna Podcasts</b>От бытовых фраз A1 до настоящих радиопередач C1.</figcaption></figure>
+    <figure class="vid reveal"><video muted loop playsinline preload="none" poster="media/video/ikileme.jpg"><source src="media/video/ikileme.mp4" type="video/mp4"></video><figcaption><b>Тренажёры</b>İkileme, гармония, аффиксы. Руками, а не глазами.</figcaption></figure>
+  </div>
+</section>
+
+<!-- PHONES -->
+<section class="sec light" id="phones">
+  <div class="sec__head reveal">
+    <div class="pills"><span class="pill pill--d">С телефона</span><span class="pill pill--d">В дороге</span></div>
+    <h2 class="h2">Работает в браузере. В автобусе, в очереди в банк, где угодно.</h2>
+    <p class="sub">Листай. Это реальные скриншоты с айфона.</p>
+  </div>
+  <div class="fan" id="fan">
+    <figure><img src="media/phone/1915.webp" alt="Каталог YouTube по уровням" loading="lazy"><figcaption>YouTube по уровням</figcaption></figure>
+    <figure><img src="media/phone/1937.webp" alt="Карточка мультфильма Buz Devri 2 с уровнем" loading="lazy"><figcaption>Мультики с уровнем</figcaption></figure>
+    <figure><img src="media/phone/1943.webp" alt="Alterna Kitap — книги на турецком" loading="lazy"><figcaption>Книги</figcaption></figure>
+    <figure><img src="media/phone/1946.webp" alt="Карточка подкаста Yoldayız, Geliyor musun?" loading="lazy"><figcaption>Подкасты</figcaption></figure>
+    <figure><img src="media/phone/1954.webp" alt="Маршрут уровня A1 «Фундамент»" loading="lazy"><figcaption>Маршрут A1</figcaption></figure>
+    <figure><img src="media/phone/1940.webp" alt="Карточка сериала Maysa ve Bulut" loading="lazy"><figcaption>Сериалы</figcaption></figure>
+  </div>
+</section>
+
+<!-- VALUE / FEATURES like 4 cards -->
+<section class="sec dark" id="value">
+  <div class="sec__head reveal">
+    <h2 class="h2 h2--light">Создано, чтобы было просто. Для всех уровней.</h2>
+  </div>
+  <div class="feat">
+    <article class="ft ft--d reveal"><svg class="mk"><use href="#mark"/></svg><h3>Всё в одном месте</h3><p>Грамматика, слова, видео, книги. Не 12 вкладок.</p></article>
+    <article class="ft ft--w reveal"><svg class="mk"><use href="#mark"/></svg><h3>Видно прогресс</h3><p>Трекер тем в Notion. Отметил — пошёл дальше.</p></article>
+    <article class="ft ft--m reveal"><svg class="mk"><use href="#mark"/></svg><h3>Чёткие уровни</h3><p>A0 → C1. Знаешь, где ты и что дальше.</p></article>
+    <article class="ft ft--d reveal"><svg class="mk"><use href="#mark"/></svg><h3>Оплата в один тап</h3><p>Через lava.top. Один раз. Без подписки.</p></article>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="sec light grid-lines" id="author">
+  <div class="author">
+    <div class="author__txt reveal">
+      <div class="pills"><span class="pill pill--d">Кто автор</span></div>
+      <h2 class="h2">Я не преподаватель из учебника. Я прошёл этот путь сам.</h2>
+      <div class="prose prose--ink">
+        <p>Меня зовут Тимур Ахметов. Учусь на электроинженера в университете Акдениз, Анталья. Год учился на подготовительном курсе TÖMER. Вышел с C1.</p>
+        <p>Турецкий, казахский, русский, английский (IELTS 7.5). Переводил технические тексты с русского на турецкий. Стажировался в консульстве РК в Анталье.</p>
+        <p>Всё, что на платформе, я сначала проверил на себе. Включая банк.</p>
+      </div>
+      <a class="btn btn--line" href="https://t.me/timaxmetov" target="_blank" rel="noopener">Написать мне в Telegram <svg><use href="#arr"/></svg></a>
+    </div>
+    <figure class="cert reveal">
+      <img src="media/cert.webp" alt="Сертификат Akdeniz Üniversitesi TÖMER, уровень C1, Timur Akhmetov, 2022–2023" loading="lazy" id="certImg">
+      <figcaption>Сертификат TÖMER · C1 · Akdeniz Üniversitesi. Тапни, чтобы увеличить.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="sec dark" id="price">
+  <div class="price reveal">
+    <div class="price__l">
+      <div class="pills"><span class="pill">Один платёж</span><span class="pill">Доступ навсегда</span></div>
+      <p class="price__big">$30</p>
+      <p class="price__s">Один раз. Не подписка. Не «первый месяц бесплатно, потом посмотрим».</p>
+      <ul class="checks">
+        <li>128 гайдов по грамматике</li><li>131 блок лексики по темам</li><li>109 интерактивных ресурсов</li><li>32 блока по экзаменам A1–C1</li><li>36 гайдов по работе</li><li>1716 материалов по уровням</li>
+      </ul>
+      <a class="btn btn--mint btn--xl magnetic" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="price">Приобрести доступ <svg><use href="#arr"/></svg></a>
+      <p class="small">Оплата картой через lava.top.</p>
+    </div>
+    <div class="price__r">
+      <div class="calc">
+        <p class="calc__h">Посчитай сам</p>
+        <label for="tutor">Сколько стоит одно занятие с репетитором у тебя?</label>
+        <div class="calc__val"><span id="tutorVal">$15</span></div>
+        <input type="range" id="tutor" min="5" max="50" step="1" value="15">
+        <p class="calc__out" id="tutorOut">$30 — это 2 занятия. Два часа, и всё.</p>
+        <hr>
+        <p class="calc__h">А тут</p>
+        <p class="calc__big">2 152</p>
+        <p class="calc__out">единиц контента за те же $30. Это <b>≈1,4 цента</b> за гайд, блок или материал.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec light" id="faq">
+  <div class="sec__head reveal"><h2 class="h2">Частые «а если».</h2></div>
+  <div class="faq">
+    <details class="reveal"><summary>Я совсем ноль. Мне туда рано?</summary><p>Нет. Уровни начинаются с A0. Первый шаг — алфавит и звуки. Те самые семь букв из начала страницы.</p></details>
+    <details class="reveal"><summary>У меня 15 минут в день. Хватит?</summary><p>Хватит, если не тратить их на поиск. Для этого всё и собрано: открыл уровень, взял материал, занимаешься.</p></details>
+    <details class="reveal"><summary>Это подписка?</summary><p>Нет. $30 один раз. Доступ навсегда.</p></details>
+    <details class="reveal"><summary>Чем это лучше бесплатного YouTube?</summary><p>YouTube тоже внутри. Только уже разложен по уровням и проверен. Бесплатно — это когда платишь временем.</p></details>
+    <details class="reveal"><summary>Оплата не проходит. Что делать?</summary><p>Напиши мне в Telegram <a href="https://t.me/timaxmetov" target="_blank" rel="noopener">@timaxmetov</a>. Разберёмся.</p></details>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final dark" id="final">
+  <div class="final__in reveal">
+    <p class="kicker"><svg class="mk"><use href="#mark"/></svg> Alterna Timur · A0 → C1</p>
+    <h2>Банк ты уже прошёл. Осталось ещё 130 тем.</h2>
+    <p class="lead">Всё уже собрано. Искать не надо.</p>
+    <a class="btn btn--mint btn--xl magnetic" id="finalCta" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="final">Забрать за $30 <svg><use href="#arr"/></svg></a>
+  </div>
+  <div class="wordmark" aria-hidden="true">alterna</div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p><svg class="mk"><use href="#mark"/></svg> Alterna Timur · турецкий A0→C1 · <a href="https://t.me/timaxmetov" target="_blank" rel="noopener">@timaxmetov</a></p>
+  <p class="small">Озвучка работает через голос браузера (tr-TR). Если голоса нет — проверь настройки речи в системе.</p>
+</footer>
+
+<a class="sticky" id="sticky" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="sticky">
+  <span><b>Alterna Timur A0→C1</b><small>131 тема лексики · навсегда</small></span>
+  <span class="sticky__btn">$30 <svg><use href="#arr"/></svg></span>
+</a>
+
+<div class="lb" id="lb" hidden><button class="lb__x" aria-label="Закрыть" type="button">×</button><img alt=""></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
