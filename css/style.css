@@ -653,3 +653,19 @@ svg{width:1em;height:1em}
   #brothers .net,#brothers .hours{display:inline-block;vertical-align:top;width:calc(50% - 8px)}
   #brothers .net{margin-right:12px}
 }
+
+/* WhatsApp / Kazakhstan */
+.kz{margin-top:22px;padding:18px;border-radius:var(--r-sm);border:1px dashed rgba(37,211,102,.55);background:rgba(37,211,102,.06)}
+.kz__h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.kz__flag{font-size:22px}
+.kz__t{font-size:15px;color:#cfcfcf;margin:6px 0 14px}
+.btn--wa{background:#25D366;color:#04210f;width:100%}
+.btn--wa svg{width:22px;height:22px}
+.btn--wa:hover{box-shadow:0 12px 40px -10px rgba(37,211,102,.6)}
+.final__kz{margin-top:16px;font-size:16px;color:#cfcfcf}
+.final__kz a{display:inline-flex;align-items:center;gap:6px;color:#25D366;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(37,211,102,.5)}
+.final__kz svg{width:18px;height:18px}
+@media (min-width:760px){.btn--wa{width:auto}}
+
+html{overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
